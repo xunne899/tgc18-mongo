@@ -7,23 +7,27 @@ require('dotenv').config()
 
 
 
+
+
+
+
 async function main() {
-  /* 1. SETUP EXPRESS */
-  let app = express();
+  
+/* 1. SETUP EXPRESS */
+let app = express();
 
-  // 1B. SETUP VIEW ENGINE
-  app.set("view engine", "hbs");
+// 1B. SETUP VIEW ENGINE
+app.set("view engine", "hbs");
 
-  // 1C. SETUP STATIC FOLDER
-  app.use(express.static("public"));
+// 1C. SETUP STATIC FOLDER
+app.use(express.static("public"));
 
-  // 1D. SETUP WAX ON (FOR TEMPLATE INHERITANCE)
-  wax.on(hbs.handlebars);
-  wax.setLayoutPath("./views/layouts");
+// 1D. SETUP WAX ON (FOR TEMPLATE INHERITANCE)
+wax.on(hbs.handlebars);
+wax.setLayoutPath("./views/layouts");
 
-  // 1E. ENABLE FORMS
-  app.use(express.urlencoded({ extended: false }));
-
+// 1E. ENABLE FORMS
+app.use(express.urlencoded({ extended: false }));
   // 1F. Connect to Mongo
   await MongoUtil.connect(process.env.MONGO_URL, 'cico');
 
