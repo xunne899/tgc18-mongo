@@ -1,9 +1,10 @@
 {{#extends 'base'}}
 {{#block "content"}}
 
-<h1>Food</h1>
+<h1>All Food List</h1>
 
 <table class="table">
+     <a href="/food/add" class="btn btn-success">Add new food</a>
     <thead>
         <tr>
             <th>ID</th>
@@ -20,7 +21,7 @@
             <td>{{join this.tags ", "}}</td>
 
                   <td>
-                     <a href="/food/add" class="btn btn-success">Add</a>
+                    
                     <a href="/food/{{this._id}}/edit" class="btn btn-primary">Edit</a>
                     <a href="/food/{{this._id}}/delete" class="btn btn-danger">Delete</a>
                    

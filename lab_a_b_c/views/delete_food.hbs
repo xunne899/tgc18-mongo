@@ -2,18 +2,23 @@
 {{#block "content"}}
 
 <form method="POST">
-    <h1>Deleting food </h1>
+    <h2>Deleting food </h2>
     <div >
-        Are you sure you want to delete the food :
-       '{{foodRecord._id}}', '{{foodRecord.foodName}}',   ?
+        
+        <h3>Are you sure you want to delete food :</h3>
+       <div>
+       <h4>ID: {{foodRecord._id}}</h4>
+       </div>
+        <div>
+         <h4> Name: {{foodRecord.foodName}} ?</h4>
+        </div>
     </div>
     <input type="submit" value="OK" class="btn btn-danger"/>
-    <a href="/" class="btn btn-success">Cancel</a>
+    <a href="/food" class="btn btn-success">Cancel</a>
 </form>
 
 
 
 
 {{/block}}
-
 {{/extends}}
