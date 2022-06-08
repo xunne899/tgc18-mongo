@@ -7,10 +7,6 @@ require('dotenv').config()
 
 
 
-
-
-
-
 async function main() {
   
 /* 1. SETUP EXPRESS */
@@ -28,15 +24,21 @@ wax.setLayoutPath("./views/layouts");
 
 // 1E. ENABLE FORMS
 app.use(express.urlencoded({ extended: false }));
-  // 1F. Connect to Mongo
-  await MongoUtil.connect(process.env.MONGO_URL, 'cico');
 
-  app.get('/food/add', function(req,res){
+// 1F. Connect to Mongo
+await MongoUtil.connect(process.env.MONGO_URL, 'cico');
+
+
+
+// add food
+app.get('/food/add', function(req,res){
     res.render('add_food')
 })
 
+
+// add food post
 app.post("/food/add", (req, res) => {
-    let { foodName, calories, tags } = req.body;
+    let {foodName, calories, tags} = req.body;
     let db = MongoUtil.getDB();    
     if (!Array.isArray(tags)) {
       tags = [tags];
