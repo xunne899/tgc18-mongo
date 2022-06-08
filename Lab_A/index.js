@@ -2,8 +2,20 @@ const express = require("express");
 const hbs = require("hbs");
 const wax = require("wax-on");
 const MongoUtil = require("./MongoUtil.js");
+const helpers = require("handlebars-helpers")({
+  handlebars: hbs.handlebars
+});
 
 require('dotenv').config()
+
+
+
+
+
+
+
+
+
 
 
 
@@ -51,6 +63,21 @@ app.post("/food/add", (req, res) => {
     });
      res.send('Food has been added')
   });
+
+
+// get foodlist
+app.get("/food", async (req, res) => {
+  let db = MongoUtil.getDB();
+  let foodRecords = await db
+    .collection("food")
+    .find()
+    .toArray();
+  res.render("food", {
+    foodRecords
+  });
+});
+
+
 
   // 3. RUN SERVER
   app.listen(3000, () => console.log("Server started"));
